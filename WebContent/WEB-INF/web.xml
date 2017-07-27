@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>FilterTest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <filter>
+  <filter-name>FilterTest</filter-name>
+  <filter-class>cc.biibi.filterdemo.FilterTest</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>FilterTest</filter-name>
+  <url-pattern>/login/*</url-pattern>
+  </filter-mapping>
+  <!-- 以上为filter配置信息 -->
+  
+  <!-- ============================================================================= -->
+  <!-- 以下为登录信息拦截用配置信息 -->
+  
+  <!-- 用户信息放入到session中的key中 -->
+  <context-param>
+  <param-name>userSessionKey</param-name>
+  <param-value>sessionkey</param-value>
+  </context-param>
+  
+  <!-- 若未登录，重定向到登录页面 -->
+  <context-param>
+  <param-name>rediretPage</param-name>
+  <param-value>/login/login.jsp</param-value>
+  </context-param>
+  
+  <!-- 不需要拦截的页面 -->
+  <context-param>
+  <param-name>uncheckedUrls</param-name>
+  <param-value>/login/a.jsp,/login/list.jsp,/login/dologin.jsp,/login/login.jsp</param-value>
+  </context-param>
+  
+</web-app>
